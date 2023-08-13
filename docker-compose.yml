@@ -1,0 +1,15 @@
+version: '3'
+services:
+  xeeter-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: xeeter
+      POSTGRES_USER: xeeter_admin
+      POSTGRES_PASSWORD: xeeter_pass # Substitua pela senha desejada
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
