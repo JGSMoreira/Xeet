@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.transaction.Transactional;
 import net.behaze.xeet.modules.Xeet.dtos.XeetDTO;
@@ -32,6 +32,15 @@ public class XeetController {
     @Transactional
     public ResponseEntity<Object> store(XeetDTO xeet){
         Xeet xeetEntity = xeetMapper.toEntity(xeet);
+
+        return ResponseEntity.ok(xeetRepository.save(xeetEntity));
+    }
+
+    @PostMapping("/editar/{id}")
+    @Transactional
+    public ResponseEntity<Object> update(@PathVariable Long id, XeetDTO xeet){
+        Xeet xeetEntity = xeetRepository.findById(id).get();
+        xeetEntity.setConteudo(xeet.getConteudo());
 
         return ResponseEntity.ok(xeetRepository.save(xeetEntity));
     }

@@ -19,7 +19,6 @@ import net.behaze.xeet.modules.EntityBase.EntityBase;
 import net.behaze.xeet.modules.Pessoa.Pessoa;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Entity
@@ -43,4 +42,8 @@ public class Usuario extends EntityBase {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_pessoa", foreignKey = @ForeignKey(name = "fk_usuario_pessoa"))
     private Pessoa pessoa;
+
+    public Usuario(){
+        this.status = "A";
+    }
 }
