@@ -1,5 +1,8 @@
 package net.behaze.xeet.modules.Xeet;
 
-public class XeetRepository {
+import net.behaze.xeet.modules.crud.BaseRepository;
+
+public interface XeetRepository extends BaseRepository<Xeet, Long>{
     
+ 
 }
