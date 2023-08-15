@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import net.behaze.xeet.modules.EntityBase.EntityBase;
-import net.behaze.xeet.modules.XeetMedia.XeetMedia;
+import net.behaze.xeet.modules.XeetMedia.Media;
 
 @Entity
 @Table(name = "xeet")
@@ -28,7 +28,7 @@ public class Xeet extends EntityBase{
     @Column(name = "xeet_conteudo", length = 210, nullable = false)
     String conteudo;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "xeet")
-    List<XeetMedia> media;
+    // @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "xeet")
+    // List<XeetMedia> media;
 
 }
