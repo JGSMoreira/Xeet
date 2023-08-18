@@ -1,4 +1,4 @@
-package net.behaze.xeet.modules.XeetMedia;
+package net.behaze.xeet.modules.Media;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.CascadeType;
@@ -26,17 +26,17 @@ import net.behaze.xeet.modules.Xeet.Xeet;
 @AttributeOverride(name = "id", column = @Column(name = "id_media", columnDefinition = "SERIAL"))
 public class Media extends EntityBase {
 
-    @Column(name = "media", nullable = false, columnDefinition = "bytea")
+    @Column(name = "media", nullable = true, columnDefinition = "bytea")
     private byte[] media;
 
     @Column(name = "media_tipo", length = 210, nullable = false)
     private String tipo;
 
-    @Column(name = "media_nome", length = 210, nullable = false)
+    @Column(name = "media_nome", length = 210, nullable = true)
     private String nome;
 
-    // @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Xeet.class)
-    // @JoinColumn(name = "media_xeet_fk", foreignKey = @ForeignKey(name = "fk_media_xeet"))
-    // private Xeet xeet;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "media_xeet_fk", foreignKey = @ForeignKey(name = "fk_media_xeet"))
+    private Xeet xeet;
     
 }
